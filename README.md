@@ -1,3 +1,38 @@
+# Nombre del grupo:
+  Grupo X²
+
+  ![Logo del Grupo](./src/assets/x2.png)
+
+
+## Integrantes del grupo: 
+- Vidal Santiago
+- Quiñiñires Melani
+
+## Nombre del proyecto: 
+To do list
+
+## Descripcion del proyecto:
+Esta app es una lista de tareas que permite al usuario agregar tareas a su lista, marcarlas como 
+hechas y tambien borrarlas.
+
+## Tecnologías Utilizadas
+- React
+- Node.js
+
+
+## Instalación
+### Prerrequisitos
+- Node.js
+- npm
+
+### Instrucciones
+1. Clonar el repositorio:
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
