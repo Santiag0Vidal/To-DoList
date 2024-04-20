@@ -3,9 +3,10 @@ import './App.css';
 import Home from './Pages/Home/Home';
 function App() {
   return (
+    //todo lo que esta dentro de return es jsx
     <div className="App">
       <header className="App-header">
-        <p>holahola hoalaaa</p>
+        <p></p>
         <Home></Home>
 
       </header>

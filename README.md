@@ -1,6 +1,5 @@
 # Nombre del grupo:
-  Grupo X²
-
+  Grupo:
   ![Logo del Grupo](./src/assets/x2.png)
 
 
@@ -26,10 +25,25 @@ hechas y tambien borrarlas.
 - npm
 
 ### Instrucciones
-1. Clonar el repositorio:
+1. Clonar el repositorio: https://github.com/Santiag0Vidal/To-DoList.git
+2. Abrir CMD/Terminal y situarse en la carpeta donde quedo el proyecto (ej: cd C:\laragon\www\To-DoList)
+3. Ejecutar npm start
+
+## Archivo index.js
+Es el primer archivo que se ejecuta cuando el proyecto carga en el navegador. Es el punto de entrada de la aplicacion
+Se encarga de configurar y renderizar la aplicacion React en la pagina web asegurandose de que todo este listo para que los usuarios interactuen con ella. 
 
 
+## Archivo App.js
+Es quien define la estructura basica de la pagina web y decide qué componentes se deben mostrar, en nuestro caso 
+mostramos a Home dentro de un header. Es como el esqueleto de la parte visible de la aplicacion en el navegador.
 
+## Archivo index.css
+Este archivo configura los estilos basicos que afectan directamente la apariencia general de la pagina web, en nuestro
+archivo solo modificamos body y code 
+
+## package.json
+Este archivo sirve como el corazon de la configuracion del proyecto, mantiene un registro de las bibliotecas y scripts que el proyecto necesita para operar, ademas almacena configuraciones utiles para herramientas que hacen que el desarrollo sea mas eficiente y seguro. Actua como un directorio y una guia para el proyecto 
 
 
 
