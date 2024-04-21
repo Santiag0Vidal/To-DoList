@@ -1,46 +1,25 @@
-import style from './Tarea.module.css' // Importa los estilos CSS para el componente TodoListApp
 import React, { useState } from 'react'; // Importa React y el hook useState desde la biblioteca 'react'
 import TaskInputButton from '../Button/Button';
-
-// Componente para el input de agregar nuevas tareas
-function TaskInput({ onAdd }) { // Define un componente funcional llamado TaskInput que recibe una función onAdd como prop
-  const [currentTask, setCurrentTask] = useState(''); // Define un estado local currentTask para almacenar el valor del input
-
-  const handleAddTask = () => { // Define una función handleAddTask para agregar una nueva tarea
-    if (currentTask.trim() !== '') { // Verifica si el input no está vacío
-      onAdd(currentTask); // Llama a la función onAdd pasando el valor del input como argumento
-      setCurrentTask(''); // Limpia el valor del input
-    }
-  };
-
-  return ( // Retorna la interfaz de usuario del componente TaskInput
-    <div>
-      <input
-        type="text"
-        value={currentTask}
-        onChange={(e) => setCurrentTask(e.target.value)}
-        placeholder="Agregar nueva tarea"
-      />
-      <TaskInputButton onClick={handleAddTask} buttonText="Agregar" /> {/* Renderiza el componente TaskInputButton y pasa la función handleAddTask y el texto "Agregar" como props */}
-    </div>
-  );
-}
+import BuscadorTareas from '../BuscadorTareas/BuscadorTareas'; // Importa el nuevo componente BuscadorTareas
+import AgregarTarea from '../AgregarTarea/AgregarTarea'; // Importa el nuevo componente AgregarTarea
+import styles from './Tarea.module.css'; // Importa el archivo CSS de estilo
 
 // Componente para mostrar la lista de tareas y realizar operaciones
 function TaskList({ tasks, onToggle, onDelete }) { // Define un componente funcional llamado TaskList que recibe tareas, funciones onToggle y onDelete como props
   return ( // Retorna la interfaz de usuario del componente TaskList
     <ul>
       {tasks.map((task, index) => ( // Mapea cada tarea en un elemento de lista
-        <li key={index}>
+        <li key={index} className={styles.listItem}>
           <input
             type="checkbox"
             checked={task.completed}
             onChange={() => onToggle(index)}
+            className={styles.checkbox}
           />
-          <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+          <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }} className={styles.taskDescription}>
             {task.description}
           </span>
-          <TaskInputButton onClick={() => onDelete(index)} buttonText="Eliminar" /> {/* Renderiza el componente TaskInputButton y pasa la función onDelete y el texto "Eliminar" como props */}
+          <TaskInputButton onClick={() => onDelete(index)} buttonText="Eliminar" className={styles.delete} /> {/* Renderiza el componente TaskInputButton y pasa la función onDelete y el texto "Eliminar" como props */}
         </li>
       ))}
     </ul>
@@ -72,16 +51,11 @@ export default function TodoListApp() { // Define un componente funcional llamad
   );
 
   return ( // Retorna la interfaz de usuario del componente TodoListApp
-    <div>
+    <div className={styles.container}>
       <h1>To-Do List</h1>
-      <TaskInput onAdd={addTask} /> 
+      <AgregarTarea onAddTask={addTask} /> {/* Renderiza el nuevo componente AgregarTarea y pasa la función addTask como prop */}
 
-      <input
-        type="text"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Buscar tareas"
-      />
+      <BuscadorTareas value={searchText} onChange={setSearchText} /> {/* Renderiza el nuevo componente BuscadorTareas y pasa el texto de búsqueda y setSearchText como props */}
 
       <p>Total de tareas: {tasks.length}</p>
       <p>Tareas completadas: {tasks.filter(task => task.completed).length}</p>
