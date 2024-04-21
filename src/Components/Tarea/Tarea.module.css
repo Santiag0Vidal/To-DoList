@@ -1,3 +1,15 @@
+.restMessage {
+  font-size: 20px;
+  color: rgb(229, 235, 229);
+  background-color: #007bff;
+  padding: 10px;
+  border: 1px solid rgb(18, 19, 18);
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(20, 17, 17, 0.1);
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;

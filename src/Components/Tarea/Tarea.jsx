@@ -1,6 +1,7 @@
 import style from './Tarea.module.css' // Importa los estilos CSS para el componente TodoListApp
 import React, { useState } from 'react'; // Importa React y el hook useState desde la biblioteca 'react'
 import TaskInputButton from '../Button/Button';
+import BuscadorTareas from '../BuscadorTareas/BuscadorTareas';
 
 // Componente para el input de agregar nuevas tareas
 function TaskInput({ onAdd }) { // Define un componente funcional llamado TaskInput que recibe una función onAdd como prop
@@ -75,22 +76,34 @@ export default function TodoListApp() { // Define un componente funcional llamad
     <div>
       <h1>To-Do List</h1>
       <TaskInput onAdd={addTask} /> 
+      
 
-      <input
-        type="text"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Buscar tareas"
-      />
+      <BuscadorTareas searchText={searchText} onChange={setSearchText} /> {/* Esto es un comentario */}
+     
 
       <p>Total de tareas: {tasks.length}</p>
       <p>Tareas completadas: {tasks.filter(task => task.completed).length}</p>
 
-      {filteredTasks.length > 0 ? ( // Si hay tareas filtradas, renderiza el componente TaskList y pasa las funciones onToggle y onDelete como props
-        <TaskList tasks={filteredTasks} onToggle={toggleTask} onDelete={deleteTask} />
-      ) : (
-        <p>No hay tareas para mostrar. ¡Listo para descansar!</p>
-      )}
-    </div>
-  );
+      {tasks.length === 0 || tasks.every(task => task.completed) ? (
+      <p className={style.restMessage}>Completaste tus tareas. ¡Estás listo para descansar!</p> // Muestra este mensaje si no hay tareas o todas están completadas
+    ) : (
+      <TaskList tasks={filteredTasks} onToggle={toggleTask} onDelete={deleteTask} />
+    )}
+
+    {tasks.length > 0 && tasks.some(task => task.completed) && (
+      <div>
+        <h2>Tareas Completadas:</h2>
+        <ul>
+          {tasks.filter(task => task.completed).map((task, index) => (
+            <li key={index}>
+              <span style={{ textDecoration: 'line-through' }}>
+                {task.description}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+);
 }
