@@ -1,0 +1,11 @@
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d2abab;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .gif{
+    height: 200px;
+    width: 250px;
+  }
