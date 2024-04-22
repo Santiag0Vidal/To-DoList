@@ -1,5 +1,5 @@
 import React from 'react'; // Importa React desde la biblioteca 'react'
-import styles from '../Tarea/Tarea.module.css'; // Importa el archivo CSS de estilo
+import styles from './ListaTarea.module.css'; // Importa el archivo CSS de estilo
 import Button from '../Button/Button';
 
 
