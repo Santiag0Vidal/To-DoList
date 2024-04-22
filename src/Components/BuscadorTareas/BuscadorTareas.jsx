@@ -1,15 +1,15 @@
-import React from 'react'; // Importa React desde la biblioteca 'react'
-import styles from './BuscadorTareas.module.css'; // Importa el archivo CSS de estilo
+import React from 'react'; 
+import styles from './BuscadorTareas.module.css'; 
 
-export default function BuscadorTareas({ value, onChange }) { // Define un componente funcional llamado BuscadorTareas que recibe value y onChange como props
-  return ( // Retorna la interfaz de usuario del componente BuscadorTareas
+export default function BuscadorTareas({ value, onChange }) { 
+  return ( 
     <div>
       <input
         type="text"
-        value={value} // Establece el valor del input como el valor de la prop 'value'
-        onChange={(e) => onChange(e.target.value)} // Cuando cambia el valor del input, se llama a la función onChange pasando el nuevo valor como argumento
+        value={value} 
+        onChange={(e) => onChange(e.target.value)} 
         placeholder="Buscar tareas"
-        className={styles.input} // Aplica la clase CSS del módulo importado al input
+        className={styles.input} 
       />
     </div>
   );

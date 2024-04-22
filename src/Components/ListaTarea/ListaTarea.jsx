@@ -1,11 +1,10 @@
-import React from 'react'; // Importa React desde la biblioteca 'react'
-import styles from './ListaTarea.module.css'; // Importa el archivo CSS de estilo
+import React from 'react'; 
+import styles from './ListaTarea.module.css'; 
 import Button from '../Button/Button';
 
 
-// Componente para mostrar la lista de tareas y realizar operaciones
-function TaskList({ tasks, onToggle, onDelete }) { // Define un componente funcional llamado TaskList que recibe tareas, funciones onToggle y onDelete como props
-  return ( // Retorna la interfaz de usuario del componente TaskList
+function TaskList({ tasks, onToggle, onDelete }) { 
+  return ( 
     <ul>
       {tasks.map((task, index) => ( // Mapea cada tarea en un elemento de lista
         <li key={index} className={styles.listItem}>
@@ -18,7 +17,7 @@ function TaskList({ tasks, onToggle, onDelete }) { // Define un componente funci
           <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }} className={styles.taskDescription}>
             {task.description}
           </span>
-          <Button onClick={() => onDelete(index)} buttonText="Eliminar" className={styles.delete} /> {/* Renderiza el componente TaskInputButton y pasa la función onDelete y el texto "Eliminar" como props */}
+          <Button onClick={() => onDelete(index)} buttonText="Eliminar" className={styles.delete} /> 
         </li>
       ))}
     </ul>

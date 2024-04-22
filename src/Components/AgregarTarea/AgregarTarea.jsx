@@ -1,23 +1,30 @@
-import React, { useState } from 'react'; // Importa React y el hook useState desde la biblioteca 'react'
+import React, { useState } from 'react'; 
 
-export default function AgregarTarea({ onAddTask }) { // Define un componente funcional llamado AgregarTarea que recibe la función onAddTask como prop
-  const [currentTask, setCurrentTask] = useState(''); // Define un estado local currentTask para almacenar el valor del input
+export default function AgregarTarea({ onAddTask }) { 
+  const [currentTask, setCurrentTask] = useState(''); 
+  const [showError, setShowError] = useState(false);
 
-  const handleAddTask = () => { // Define una función handleAddTask para agregar una nueva tarea
-    onAddTask(currentTask); // Llama a la función onAddTask pasando el valor del input como argumento
-    setCurrentTask(''); // Limpia el valor del input
+  const handleAddTask = () => { 
+    if (currentTask.trim() !== '') {
+    onAddTask(currentTask.trim()); 
+    setCurrentTask(''); // Limpio el valor del input
+    setShowError(false); 
+  } else {
+    setShowError(true); 
+  }
   };
 
-  return ( // Retorna la interfaz de usuario del componente FormularioAgregarTarea
+  return ( 
     <div>
       <input
         type="text"
         value={currentTask}
-        onChange={(e) => setCurrentTask(e.target.value)} // Actualiza el estado currentTask con el valor del input
+        onChange={(e) => setCurrentTask(e.target.value)} 
         
         placeholder="Agregar nueva tarea"
       />
       <button onClick={handleAddTask}>Agregar</button> 
+      {showError && <p>No se pueden agregar tareas vacías.</p>}
     </div>
   );
 }
